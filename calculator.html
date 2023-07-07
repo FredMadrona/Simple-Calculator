@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<title> Sample Calculator </title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  
+    
+</head>
+
+
+
+<body>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+body{
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            background-image: url("math-bg.jpg");
+
+       }
+        input{
+            text-align: right;
+            color: white;
+           
+        }
+
+
+        #screen{
+            background-color: rgba(0, 0, 0, 0.114);
+            font-size: 30px;
+             margin-left: 5px;
+             margin-right: 5px;
+             width: 225px !important;
+            color: white;
+        }
+
+    .form{
+        
+        width: max-content;
+        margin-top: 10%;
+       margin-left: 40%;
+       padding: 10px;
+        
+    }
+
+    .top{
+        padding: 15px;
+        margin: 10px;
+        margin-top: 3px;
+        padding-bottom: 0px;
+        background-color: #35530a;
+        border: solid black 5px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+
+    .form-control{
+        box-shadow: 3cm black;
+        background-color: #C0C0C0;
+        margin-bottom: 10px;
+        width: 215px;
+    }
+    
+    .btn{
+       padding-bottom: 1px;
+        font-size: 28px;
+        margin-left:0px;
+       
+    }
+ 
+
+  
+
+    table{
+       
+        align-self: center;
+        align-items: center;
+     
+
+    }
+
+    ul{
+        background-color: rgb(93, 91, 90);
+        margin-left: 0px;
+        width: fit-content;
+        padding-left: 10px;
+    }
+  
+
+    .custom{
+    width: 50px !important;
+    background-color: rgb(222, 206, 184);
+    border: solid black 3px;
+    border-radius: 10px;
+    margin-right: 3px;
+    
+    }
+
+    #delete{
+        
+        background-color: rgb(203, 107, 107);
+        padding-left: 7px;
+        text-align: center;
+        padding-top: 0px;
+        padding-left: 7px;
+        padding-bottom: 8px;
+      
+    }
+
+    #add{
+        
+        background-color: burlywood;
+    }
+
+    #minus{
+        background-color: burlywood;
+    }
+
+    #multiply{
+        background-color: burlywood;
+    }
+
+    #divide{
+         background-color: burlywood;
+    }
+
+
+    #enter{
+
+        background-color: rgb(229, 229, 229);
+        width: 165px !important;
+    }
+    
+    .content{
+        background-color: rgb(93, 91, 90);
+        border: black solid 4px;
+        border-radius: 10px;
+        margin: 0px;
+        padding: 0px;
+        
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+  /*  .solar{
+    border-radius: 10px;
+        margin-top: 5px;
+        margin-right: 10px;
+        
+        padding-right: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        text-decoration: solid;
+        background-color: #C0C0C0;
+        border: solid black 2px;
+        color: #643636;
+        
+    } */
+
+
+    p{
+       height: 28px;
+        color: azure;
+        font-size: medium;
+        letter-spacing: 2px;
+        text-decoration: solid;
+       text-align: right;
+       background-color: rgb(188, 171, 162);
+       padding-right: 5px;
+       padding-bottom: 3px;
+       margin-bottom: 10px;
+       margin-top: 10px;
+       margin-right: 18px;
+       border: black solid 2px;
+       border-radius: 5px;
+       margin-left: 215px;
+    }
+
+    </style>
+
+
+
+
+
+    <form id="Calculator" >
+        <script>
+
+            // number buttons 
+            function display7(){
+               document.getElementById("screen").value += ''+'7';
+            }
+            function display8(){
+               document.getElementById("screen").value += ''+'8';
+            }
+            function display9(){
+               document.getElementById("screen").value += ''+'9';
+            }
+
+            function display4(){
+               document.getElementById("screen").value += ''+'4';
+            }
+            function display5(){
+               document.getElementById("screen").value += ''+'5';
+            }
+
+            function display6(){
+               document.getElementById("screen").value += ''+'6';
+            }
+            function display3(){
+               document.getElementById("screen").value += ''+'3';
+            }
+
+            function display2(){
+               document.getElementById("screen").value += ''+'2';
+            }
+
+            function display1(){
+               document.getElementById("screen").value += ''+'1';
+            }
+            function display0(){
+               document.getElementById("screen").value += ''+'0';
+            }
+
+            function displaydot(){
+               document.getElementById("screen").value += ''+'.';
+            }
+
+            
+
+           
+            //deletes one digit per click
+            function del(){
+                var input = document.getElementById("screen").value;
+                var result = input.slice(0,-1);
+
+                document.getElementById("screen").value = result;
+                
+            }
+
+
+            //processes the input and shows the output
+            function equal(){
+
+               var number = document.getElementById('screen').value;
+               var answer;
+               var myArray = number.split(' ');
+
+             if(myArray[1] == '+'){
+
+                answer = parseFloat(myArray[0]) + parseFloat(myArray[2]);
+                document.getElementById('screen').value = parseFloat(answer);
+
+             }
+               
+           
+            else if(myArray[1] == '-'){
+
+                answer = parseFloat(myArray[0]) - parseFloat(myArray[2]);
+                document.getElementById('screen').value = parseFloat(answer);
+
+             }
+              
+            else if(myArray[1] == '*'){
+
+                answer = parseFloat(myArray[0]) * parseFloat(myArray[2]);
+                document.getElementById('screen').value = parseFloat(answer);
+
+             }
+            
+
+            else if(myArray[1] == '/'){
+
+                answer = parseFloat(myArray[0]) / parseFloat(myArray[2]);
+                document.getElementById('screen').value = parseFloat(answer);
+
+             }
+
+             else
+             alert('invalid input');
+
+            }
+
+            //operation functions 
+            function plus(){ 
+                var addend = document.getElementById('screen').value;       //prevents repeating symbol
+                let sum = addend.includes('+') ;
+               
+            if(sum == true) {
+                
+                document.getElementById('screen').value+= "";
+                
+            }
+
+            else
+            
+            document.getElementById('screen').value += " + ";
+
+            }
+
+            function bawas(){
+                var subtrahend = document.getElementById('screen').value;
+                let difference = subtrahend.includes('-');
+
+            if(difference == true) {
+                document.getElementById('screen').value+= "";
+            }
+
+            else
+                document.getElementById('screen').value+= ' - ';
+            
+
+            }
+            function padami(){
+                var multiplier = document.getElementById('screen').value;
+                let product = multiplier.includes('*');
+
+            if(product == true) {
+                document.getElementById('screen').value+= "";
+            }
+
+            else
+                document.getElementById('screen').value+= ' * ';
+            
+
+            }
+
+            function pakonti(){
+                var dividend = document.getElementById('screen').value;
+                let quotient = dividend.includes('/');
+
+            if(quotient == true) {
+                document.getElementById('screen').value+= "";
+            }
+
+            else
+                document.getElementById('screen').value+= ' / ';
+            
+
+            }
+
+
+            function format() {
+             var check = document.getElementById('screen').value;
+             
+             
+                }
+       
+
+            </script>
+
+            <div class="form" >
+                    
+                <div class="content">
+                      <p> | | | |  </p>
+                <div class="top">
+                
+         <input type="text" name="screen" id="screen" value="" maxlength="5" class="form-control no-border" onkeyup="format()" >
+        </div>
+
+        <table>
+            
+            <ul>
+                <input type="button" class="btn btn-outline-dark custom"  name="7" id="7" value="7" onclick="display7()">   
+                <input type="button" class="btn btn-outline-dark custom" name="8" id="8" value="8" onclick="display8()">
+                <input type="button" class="btn btn-outline-dark custom"  name="9" id="9" value="9" onclick="display9()">
+                <input type="reset" class="btn btn-outline-dark custom"  name="clear" id="clear" value="C" > 
+               <input type="button" class="btn btn-outline-dark custom" name="delete" id="delete" value="␡" onclick="del()">
+                             
+            </ul>
+            <ul>
+
+                <input type="button" class="btn btn-outline-dark custom"  name="4" id="4" value="4" onclick="display4()">  
+                <input type="button" class="btn btn-outline-dark custom"  name="5" id="5" value="5" onclick="display5()">
+                <input type="button" class="btn btn-outline-dark custom"  name="6" id="6" value="6" onclick="display6()">
+                <input type="button" class="btn btn-outline-dark custom"  name="divide" id="divide" value="÷" onclick="pakonti()"> 
+                <input type="button" class="btn btn-outline-dark custom" name="multiply" id="multiply" value="X" onclick="padami()"> 
+    
+            </ul>
+            <ul>
+
+                <input type="button" class="btn btn-outline-dark custom"  name="1" id="1" value="1" onclick="display1()"> 
+                <input type="button" class="btn btn-outline-dark custom"  name="2" id="2" value="2" onclick="display2()">
+                <input type="button" class="btn btn-outline-dark custom"  name="3" id="3" value="3" onclick="display3()">
+                <input type="button" class="btn btn-outline-dark custom"  name="add" id="add" value="+" onclick="plus()">
+                <input type="button" class="btn btn-outline-dark custom"  name="minus" id="minus" value="-" onclick="bawas()">
+
+            </ul>
+            <ul>
+
+                <input type="button" class="btn btn-outline-dark custom"  name="0" id="0" value="0" onclick="display0()"> 
+                <input type="button" class="btn btn-outline-dark custom"  name="." id="." value="." onclick="displaydot()"> 
+                <input type="button" class="btn btn-outline-dark custom"  name="enter" id="enter" value= "=" onclick="equal()">
+
+            </ul>
+           
+        </div>
+        </div>
+
+   
+        </table>
+  
+
+    </form>
+
+
+
+</body>
+
+</html>
